@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <title>JS Slide Show</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+  var currentSlide = 1;
+  var previousSlide = 4;
+
+
+  function goToSlide(n)
+  {
+    document.getElementsByClassName("num")[n-1].classList.add("selected");
+    document.getElementsByClassName("image")[previousSlide-1].style.opacity = 0;
+    document.getElementsByClassName("image")[n-1].style.opacity = 1;
+    document.getElementsByClassName("num")[previousSlide-1].classList.remove("selected");
+        currentSlide = n;
+        previousSlide = n;
+  }
+
+  function goPrev()
+  {
+      var nextSlide = currentSlide - 1
+      if(nextSlide == 0){
+        nextSlide = 4;
+      }
+      goToSlide(nextSlide);
+  }
+  function goNext()
+  {
+    var nextSlide = currentSlide + 1
+    if(nextSlide == 5){
+      nextSlide = 1;
+    }
+    goToSlide(nextSlide);
+  }
+
+  </script>
+
+  </head>
+<body onload="goToSlide(1)">
+  <img class = "image" src="Dmitriy_and_Bobby.png" alt="1" id="1">
+  <img class = "image" src="Keperkekel_farms_phjgof.jpg"alt="2" id="2">
+  <img class = "image" src="Super_bob.jpg" alt="3" id="3">
+  <img class = "image" src="Big_Money_Gambia.png" alt="4" id="4">
+  <button id="prev" onclick="goPrev()">Previous</button>
+  <button id="b1" class = "num" onclick="goToSlide(1)">1</button>
+  <button id="b2" class = "num" onclick="goToSlide(2)">2</button>
+  <button id="b3" class = "num" onclick="goToSlide(3)">3</button>
+  <button id="b4" class = "num" onclick="goToSlide(4)">4</button>
+  <button id="next" onclick="goNext()">Next</button>
+
+  </body>
